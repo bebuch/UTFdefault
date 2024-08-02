@@ -30,7 +30,7 @@ namespace UTFdefault
         /// <summary>
         /// UTFdefaultPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "e4242fd4-6c82-4213-83bd-592a5903ad35";
+        public const string PackageGuidString = "14C0D2F8-3F12-4602-9459-062533F32E90";
 
 
         #region Package Members
