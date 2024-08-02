@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -30,7 +30,7 @@ namespace UTFdefault
         /// <summary>
         /// UTFdefaultPackage GUID string.
         /// </summary>
-        public const string PackageGuidString = "14C0D2F8-3F12-4602-9459-062533F32E90";
+        public const string PackageGuidString = "1AFDC13F-6776-49CE-8F68-3385CB145C2B";
 
 
         #region Package Members
