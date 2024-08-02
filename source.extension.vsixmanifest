@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="UTFdefault.ff8fe5f7-e5dc-4213-a1d1-91ec8d84a049" Version="1.0.3" Language="en-US" Publisher="Benjamin Buch" />
+        <Identity Id="bebuch.UTFdefault" Version="1.0.0" Language="en-US" Publisher="Benjamin Buch" />
         <DisplayName>UTFdefault</DisplayName>
         <Description xml:space="preserve">Show file encode at editer bottom, click button change encode.</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=bebuch.UTFdefault</MoreInfo>
         <License>LICENSE</License>
-        <Icon>Icon.png</Icon>
-        <PreviewImage>Preview.png</PreviewImage>
-        <Tags>encoding</Tags>
+        <Icon>icon.png</Icon>
+        <PreviewImage>preview.png</PreviewImage>
+        <Tags>encoding;UTF-8;UTF8;text editor;character encoding;code page;file encoding;unicode;text files;automatic conversion;text tools</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Version="[16.0,18.0)" Id="Microsoft.VisualStudio.Community" />
