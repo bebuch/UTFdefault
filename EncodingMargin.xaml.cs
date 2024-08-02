@@ -140,9 +140,11 @@ namespace UTFdefault
             // Menu
             ContextMenu = new ContextMenu();
             (Encoding encoding, string name)[] encodings = {
-                ( Encoding.Unicode, "Unicode" ),
-                ( Encoding.BigEndianUnicode, "Unicode BE" ),
-                ( Encoding.UTF8, "UTF-8 (BOM)" ),
+                ( new UTF32Encoding(true, true), "UTF-32-BE" ),
+                ( Encoding.UTF32, "UTF-32-LE" ),
+                ( Encoding.BigEndianUnicode, "UTF-16-BE" ),
+                ( Encoding.Unicode, "UTF-16-LE" ),
+                ( Encoding.UTF8, "UTF-8-BOM" ),
                 ( new UTF8Encoding(false), "UTF-8" ),
                 ( Encoding.Default, Encoding.Default.EncodingName )
             };
