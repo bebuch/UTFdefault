@@ -5,7 +5,7 @@
         <DisplayName>UTFdefault</DisplayName>
         <Description xml:space="preserve">Show file encode at editer bottom, click button change encode.</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=bebuch.UTFdefault</MoreInfo>
-        <License>LICENSE.txt</License>
+        <License>LICENSE</License>
         <Icon>Icon.png</Icon>
         <PreviewImage>Preview.png</PreviewImage>
         <Tags>encoding</Tags>

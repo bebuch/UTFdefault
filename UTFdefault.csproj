@@ -86,7 +86,7 @@
     <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.11.15" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LICENSE.txt">
+    <Content Include="LICENSE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
