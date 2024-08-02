@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.Text;
 using System.Windows.Input;
 using System.Text;
+using System.Linq;
 
 namespace FileEncoding
 {
@@ -35,6 +36,24 @@ namespace FileEncoding
         }
 
         /// <summary>
+        /// Test if document has an UTF enoding
+        /// </summary>
+        /// <param name="document">The document to check.</param>
+        /// <returns>Is document UTF-8/16/32</returns>
+        private static bool IsDocumentUnicode(ITextDocument document)
+        {
+            int codepage = document.Encoding.CodePage;
+            int[] unicodePages = {
+                Encoding.UTF8.CodePage,
+                Encoding.Unicode.CodePage,
+                Encoding.BigEndianUnicode.CodePage,
+                Encoding.UTF32.CodePage,
+                new UTF32Encoding(true, true).CodePage
+            };
+            return unicodePages.Contains(codepage);
+        }
+
+        /// <summary>
         /// Rewrite some encoding name.
         /// </summary>
         /// <param name="document">The document to get encoding.</param>
@@ -42,14 +61,28 @@ namespace FileEncoding
         private static string GetDocumentEncoding(ITextDocument document)
         {
             int codepage = document.Encoding.CodePage;
-            if (codepage == Encoding.UTF8.CodePage) {
-                return HasBom(document.Encoding) ? "UTF-8 (BOM)" : "UTF-8";
-            } else if (codepage == Encoding.Unicode.CodePage) {
-                return "Unicode";
-            } else if (codepage == Encoding.BigEndianUnicode.CodePage) {
-                // default name is too long
-                return "Unicode BE";
-            } else {
+            if (codepage == Encoding.UTF8.CodePage)
+            {
+                return HasBom(document.Encoding) ? "UTF-8-BOM" : "UTF-8";
+            }
+            else if (codepage == Encoding.Unicode.CodePage)
+            {
+                return "UTF-16-LE";
+            }
+            else if (codepage == Encoding.BigEndianUnicode.CodePage)
+            {
+                return "UTF-16-BE";
+            }
+            else if (codepage == Encoding.UTF32.CodePage)
+            {
+                return "UTF-32-LE";
+            }
+            else if (codepage == new UTF32Encoding(true, true).CodePage)
+            {
+                return "UTF-32-BE";
+            }
+            else
+            {
                 return document.Encoding.EncodingName;
             }
         }
@@ -99,6 +132,10 @@ namespace FileEncoding
             if (!textView.TextBuffer.Properties.TryGetProperty(typeof(ITextDocument), out document)) {
                 textView.TextDataModel.DocumentBuffer.Properties.TryGetProperty(typeof(ITextDocument), out document);
             }
+            if (!IsDocumentUnicode(document))
+            {
+                document.Encoding = new UTF8Encoding(false);
+            }
             Content = GetDocumentEncoding(document);
             // Menu
             ContextMenu = new ContextMenu();
@@ -128,7 +165,18 @@ namespace FileEncoding
                 }
                 ContextMenu.IsOpen = true;
             };
-            document.FileActionOccurred += (sender, e) => Content = GetDocumentEncoding(document);
+            document.FileActionOccurred += (sender, e) =>
+            {
+                if (e.FileActionType == FileActionTypes.ContentLoadedFromDisk)
+                {
+                    if (!IsDocumentUnicode(document))
+                    {
+                        document.Encoding = new UTF8Encoding(false);
+                        document.UpdateDirtyState(true, DateTime.Now);
+                    }
+                    Content = GetDocumentEncoding(document);
+                }
+            };
         }
 
         #region AutoGenerate
