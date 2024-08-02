@@ -13,8 +13,8 @@
     <ProjectGuid>{8CB15BEB-6574-4EA4-B40F-2CCE61A576E0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FileEncoding</RootNamespace>
-    <AssemblyName>FileEncoding</AssemblyName>
+    <RootNamespace>UTFdefault</RootNamespace>
+    <AssemblyName>UTFdefault</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
@@ -50,7 +50,7 @@
     </Compile>
     <Compile Include="EncodingMarginFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FileEncodingPackage.cs" />
+    <Compile Include="UTFdefaultPackage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">

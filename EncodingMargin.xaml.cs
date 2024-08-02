@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Text;
 using System.Linq;
 
-namespace FileEncoding
+namespace UTFdefault
 {
     /// <summary>
     /// Margin's canvas and visual definition including both size and content

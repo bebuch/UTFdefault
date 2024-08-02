@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace FileEncoding
+namespace UTFdefault
 {
     /// <summary>
     /// Export a <see cref="IWpfTextViewMarginProvider"/>, which returns an instance of the margin for the editor to use.
